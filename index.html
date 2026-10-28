@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabores J&Y Tortas - Catálogo Digital</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastel: {
+                            pink: '#FDE2E4',
+                            purple: '#E2ECE9',
+                            lilac: '#E8DFF5',
+                            cream: '#FFF1E6',
+                            yellow: '#FCF6BD',
+                            mint: '#D0F4DE'
+                        },
+                        brand: {
+                            purple: '#5B2C6F',
+                            darkPurple: '#3B1748',
+                            orange: '#FF8C42',
+                            brightOrange: '#FF6F00',
+                            lightPurple: '#9B59B6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #FFF1E6 0%, #E8DFF5 50%, #FDE2E4 100%);
+            background-attachment: fixed;
+        }
+        .logo-shadow {
+            filter: drop-shadow(0px 8px 16px rgba(91, 44, 111, 0.25));
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(91, 44, 111, 0.15), 0 10px 10px -5px rgba(91, 44, 111, 0.04);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="text-gray-800 min-h-screen pb-28">
+
+    <!-- HEADER / HERO SECTION -->
+    <header class="glass-card sticky top-0 z-40 shadow-sm border-b border-purple-100">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <div class="flex items-center gap-3">
+                <!-- SVG Logo representation based on image provided -->
+                <div class="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
+                    <svg viewBox="0 0 200 200" class="w-full h-full logo-shadow">
+                        <!-- Outer Purple Circle Border -->
+                        <circle cx="100" cy="100" r="92" fill="#3B1748" stroke="#5B2C6F" stroke-width="4"/>
+                        <circle cx="100" cy="100" r="82" fill="#FFFFFF"/>
+                        <!-- Purple Liquid Splashes background -->
+                        <path d="M 40 100 Q 60 40, 100 40 T 160 100 T 100 160 Z" fill="#9B59B6" opacity="0.3"/>
+                        <path d="M 50 120 C 30 70, 100 30, 150 70 C 180 120, 110 170, 50 120 Z" fill="#5B2C6F" opacity="0.8"/>
+                        <!-- Central Cupcake / Cake SVG Icon -->
+                        <path d="M 80 110 L 120 110 L 115 145 Q 100 150 85 145 Z" fill="#FF8C42" stroke="#FFF" stroke-width="2"/>
+                        <path d="M 75 110 Q 100 80 125 110 Q 100 95 75 110 Z" fill="#FFFFFF" stroke="#5B2C6F" stroke-width="2"/>
+                        <circle cx="100" cy="85" r="7" fill="#FF6F00"/>
+                        <path d="M 100 85 Q 105 75 112 72" stroke="#5B2C6F" stroke-width="2" fill="none"/>
+                        <!-- Text Ring - Sabores -->
+                        <path id="textPath1" d="M 45,100 A 55,55 0 0,1 155,100" fill="none"/>
+                        <text font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="#FF8C42" text-anchor="middle">
+                            <textPath href="#textPath1" startOffset="50%">SABORES</textPath>
+                        </text>
+                        <!-- Main J&Y Text -->
+                        <text x="100" y="128" font-family="'Playfair Display', Georgia, serif" font-weight="900" font-size="38" fill="#FF6F00" stroke="#FFFFFF" stroke-width="2" text-anchor="middle">J&amp;Y</text>
+                        <text x="100" y="128" font-family="'Playfair Display', Georgia, serif" font-weight="900" font-size="38" fill="#FF6F00" text-anchor="middle">J&amp;Y</text>
+                        <!-- Banner Banner Tortas -->
+                        <rect x="50" y="148" width="100" height="24" rx="4" fill="#FFFFFF" stroke="#3B1748" stroke-width="2"/>
+                        <text x="100" y="165" font-family="Arial, sans-serif" font-weight="800" font-size="14" fill="#3B1748" text-anchor="middle" letter-spacing="2">TORTAS</text>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-brand-purple leading-tight font-serif">
+                        Sabores <span class="text-brand-orange">J&Y</span>
+                    </h1>
+                    <p class="text-xs md:text-sm text-gray-600 font-medium">Repostería & Tortas Frías 🍰</p>
+                </div>
+            </div>
+
+            <!-- Header Action Button -->
+            <a href="https://wa.me/584243522615?text=Hola!%20Deseo%20consultar%20sobre%20sus%20postres" target="_blank" 
+               class="hidden sm:flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-full text-sm shadow-md transition-all transform hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Atención Rápida</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- BANNER HERO -->
+    <section class="max-w-6xl mx-auto px-4 mt-6">
+        <div class="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-purple-900/10 via-pink-500/10 to-orange-500/10 border border-white/80 shadow-lg relative overflow-hidden">
+            <div class="max-w-2xl relative z-10">
+                <span class="inline-block bg-brand-purple text-white text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+                    Catálogo de Tortas Frías
+                </span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-darkPurple mb-3 font-serif">
+                    ¡Endulza tus momentos con las mejores Capas de Sabor!
+                </h2>
+                <p class="text-gray-700 text-sm md:text-base mb-6 leading-relaxed">
+                    Disfruta de nuestras exquisitas tortas frías preparadas con ingredientes de alta calidad, cremas suaves y los mejores toppings. Disponibles al detal y para pedidos al mayor.
+                </p>
+                
+                <div class="flex flex-wrap gap-3">
+                    <div class="flex items-center gap-2 bg-white/80 backdrop-blur px-3 py-1.5 rounded-xl text-xs font-semibold text-brand-purple shadow-sm">
+                        <i class="fa-solid fa-motorcycle text-brand-orange"></i> Delivery Disponible
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/80 backdrop-blur px-3 py-1.5 rounded-xl text-xs font-semibold text-brand-purple shadow-sm">
+                        <i class="fa-solid fa-boxes-packing text-brand-orange"></i> Ventas al Mayor
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/80 backdrop-blur px-3 py-1.5 rounded-xl text-xs font-semibold text-brand-purple shadow-sm">
+                        <i class="fa-solid fa-snowflake text-brand-orange"></i> Tortas Frías
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Decorative Elements -->
+            <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-gradient-to-br from-brand-orange/20 to-brand-purple/20 rounded-full filter blur-2xl pointer-events-none"></div>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTERS & SEARCH -->
+    <section class="max-w-6xl mx-auto px-4 mt-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- Category Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar" id="category-container">
+                <button onclick="filterCategory('all')" class="cat-btn active bg-brand-purple text-white font-semibold text-sm px-5 py-2.5 rounded-2xl shadow-sm whitespace-nowrap transition-all">
+                    ✨ Todos
+                </button>
+                <button onclick="filterCategory('chocolate')" class="cat-btn bg-white/80 hover:bg-white text-gray-700 font-medium text-sm px-5 py-2.5 rounded-2xl shadow-sm whitespace-nowrap transition-all">
+                    🍫 Chocolates
+                </button>
+                <button onclick="filterCategory('frutal')" class="cat-btn bg-white/80 hover:bg-white text-gray-700 font-medium text-sm px-5 py-2.5 rounded-2xl shadow-sm whitespace-nowrap transition-all">
+                    🍓 Frutales
+                </button>
+                <button onclick="filterCategory('especial')" class="cat-btn bg-white/80 hover:bg-white text-gray-700 font-medium text-sm px-5 py-2.5 rounded-2xl shadow-sm whitespace-nowrap transition-all">
+                    🍬 Especiales
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="relative w-full sm:w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input type="text" id="search-input" oninput="handleSearch()" placeholder="Buscar torta..." 
+                       class="w-full pl-10 pr-4 py-2.5 bg-white/80 border border-white focus:bg-white rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple shadow-sm transition-all">
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG GRID -->
+    <main class="max-w-6xl mx-auto px-4 mt-8">
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JavaScript rendered products -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16 glass-card rounded-3xl mt-6">
+            <div class="w-16 h-16 bg-purple-100 text-brand-purple rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-cookie-bite"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800">No encontramos ese producto</h3>
+            <p class="text-sm text-gray-500 mt-1">Intenta buscando con otro nombre o categoría.</p>
+        </div>
+    </main>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity">
+        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl transform transition-all relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-10 bg-black/40 hover:bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center transition-all">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Modal content dynamically injected -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING FOOTER / BARRA INFERIOR FIJA -->
+    <footer class="fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-purple-200/80 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] py-3 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Information items -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs md:text-sm font-medium text-gray-700">
+                <!-- Phone -->
+                <a href="tel:04243522615" class="flex items-center gap-2 bg-purple-50 hover:bg-purple-100 text-brand-purple px-3 py-1.5 rounded-full border border-purple-200 transition-all">
+                    <i class="fa-solid fa-phone text-brand-orange"></i>
+                    <span><strong>Teléfono:</strong> 04243522615</span>
+                </a>
+                
+                <!-- Delivery -->
+                <div class="flex items-center gap-2 bg-pink-50 text-pink-700 px-3 py-1.5 rounded-full border border-pink-200">
+                    <i class="fa-solid fa-motorcycle text-brand-orange"></i>
+                    <span>Contamos con <strong>Delivery 🛵</strong></span>
+                </div>
+                
+                <!-- Mayor y detal -->
+                <div class="flex items-center gap-2 bg-amber-50 text-amber-800 px-3 py-1.5 rounded-full border border-amber-200">
+                    <i class="fa-solid fa-store text-brand-orange"></i>
+                    <span>¡Ventas al <strong>mayor y detal! 🍰</strong></span>
+                </div>
+            </div>
+
+            <!-- Order via WhatsApp Direct Button -->
+            <div class="w-full md:w-auto flex justify-center">
+                <a href="https://wa.me/584243522615?text=Hola!%20Me%20gustaría%20hacer%20un%20pedido%20de%20tortas%20frías" 
+                   target="_blank"
+                   class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold px-6 py-2.5 rounded-2xl shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Hacer Pedido Directo</span>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Catalog Products Data based on user images and descriptions
+        const products = [
+            {
+                id: 1,
+                name: "Choco Wafer",
+                category: "especial",
+                price: "$3.50",
+                description: "Deliciosa torta fría con capas de cremosa mezcla suave, dulce de leche, sirope artesanal de fresa y crocantes galletas wafer.",
+                badge: "Popular",
+                tagColor: "bg-pink-100 text-pink-800",
+                bgGradient: "from-amber-100 to-pink-100",
+                svgType: "wafer"
+            },
+            {
+                id: 2,
+                name: "Chocolate",
+                category: "chocolate",
+                price: "$3.50",
+                description: "Torta fría para los amantes del cacao con abundante cobertura suave de chocolate, lluvia de chocolate y chispas crujientes.",
+                badge: "Favorito",
+                tagColor: "bg-amber-100 text-amber-900",
+                bgGradient: "from-amber-200 to-amber-900/20",
+                svgType: "chocolate"
+            },
+            {
+                id: 3,
+                name: "Fresa",
+                category: "frutal",
+                price: "$3.50",
+                description: "Refrescante torta fría cubierta con generosa capa de gelatina de fresas y deliciosos trozos de fresas naturales.",
+                badge: "Fresco",
+                tagColor: "bg-red-100 text-red-700",
+                bgGradient: "from-red-100 to-pink-200",
+                svgType: "fresa"
+            },
+            {
+                id: 4,
+                name: "Choco Dandy",
+                category: "chocolate",
+                price: "$3.50",
+                description: "Torta fría con crema suave de chocolate, lluvia de granillo y coloridos dandys / M&M crujientes encima.",
+                badge: "Colorido",
+                tagColor: "bg-purple-100 text-purple-800",
+                bgGradient: "from-purple-100 to-blue-100",
+                svgType: "dandy"
+            },
+            {
+                id: 5,
+                name: "Oreo",
+                category: "especial",
+                price: "$3.50",
+                description: "Torta fría ultrasuave de crema de vainilla combinada con trozos de galletas Oreo originales y galletas enteras de topping.",
+                badge: "Más Vendido",
+                tagColor: "bg-gray-200 text-gray-800",
+                bgGradient: "from-gray-200 to-slate-300",
+                svgType: "oreo"
+            },
+            {
+                id: 6,
+                name: "Oreo Choco Maní",
+                category: "especial",
+                price: "$3.50",
+                description: "Exquisita combinación de galletas Oreo trituradas, rica crema de chocolate y topping de maní tostado crocante.",
+                badge: "Especial",
+                tagColor: "bg-yellow-100 text-yellow-800",
+                bgGradient: "from-yellow-100 to-amber-200",
+                svgType: "oreomani"
+            },
+            {
+                id: 7,
+                name: "Flips",
+                category: "especial",
+                price: "$3.50",
+                description: "Deliciosa torta fría layered decorada con crocantes cereales Flips de dulce de leche/chocolate y fina lluvia de chocolate.",
+                badge: "Crujiente",
+                tagColor: "bg-orange-100 text-orange-800",
+                bgGradient: "from-orange-100 to-amber-100",
+                svgType: "flips"
+            }
+        ];
+
+        let activeCategory = 'all';
+
+        // SVG Visual Representation for Container Cakes
+        function generateProductSVG(type, name) {
+            let topDecoration = '';
+            
+            switch(type) {
+                case 'wafer':
+                    topDecoration = `
+                        <!-- Red Strawberry Jam side -->
+                        <path d="M 30 75 Q 55 65 80 75 L 80 90 L 30 90 Z" fill="#E63946" />
+                        <rect x="45" y="70" width="10" height="15" rx="2" fill="#FFE3E3" stroke="#D90429"/>
+                        <rect x="58" y="70" width="10" height="15" rx="2" fill="#FFE3E3" stroke="#D90429"/>
+                        <!-- Pink Cream Pipe -->
+                        <path d="M 30 72 Q 100 68 170 72" stroke="#FFB5A7" stroke-width="8" stroke-linecap="round" fill="none"/>
+                        <!-- Chocolate Dulce de Leche Lines -->
+                        <path d="M 90 75 Q 130 65 170 75 L 170 85 L 90 85 Z" fill="#7F4F24" />
+                        <path d="M 95 72 C 105 60, 115 80, 125 72 C 135 60, 145 80, 160 72" stroke="#582F0E" stroke-width="4" fill="none"/>
+                    `;
+                    break;
+                case 'chocolate':
+                    topDecoration = `
+                        <!-- Chocolate Ganache Surface -->
+                        <path d="M 30 72 Q 100 68 170 72 L 170 88 Q 100 92 30 88 Z" fill="#4A2810"/>
+                        <!-- Chocolate sprinkles -->
+                        <circle cx="50" cy="78" r="2" fill="#2B1704"/><circle cx="70" cy="82" r="2.5" fill="#2B1704"/>
+                        <circle cx="90" cy="76" r="2" fill="#2B1704"/><circle cx="110" cy="84" r="3" fill="#2B1704"/>
+                        <circle cx="130" cy="78" r="2" fill="#2B1704"/><circle cx="150" cy="82" r="2.5" fill="#2B1704"/>
+                        <rect x="60" y="75" width="6" height="2" fill="#2B1704" transform="rotate(25 60 75)"/>
+                        <rect x="100" y="78" width="7" height="2" fill="#2B1704" transform="rotate(-15 100 78)"/>
+                        <rect x="140" y="76" width="6" height="2" fill="#2B1704" transform="rotate(40 140 76)"/>
+                    `;
+                    break;
+                case 'fresa':
+                    topDecoration = `
+                        <!-- Strawberry Gelatin Layer -->
+                        <path d="M 30 72 Q 100 68 170 72 L 170 88 Q 100 92 30 88 Z" fill="#E63946" opacity="0.95"/>
+                        <!-- Strawberry slices -->
+                        <ellipse cx="60" cy="80" rx="10" ry="6" fill="#C1121F" stroke="#FFF" stroke-width="1"/>
+                        <ellipse cx="100" cy="78" rx="12" ry="7" fill="#C1121F" stroke="#FFF" stroke-width="1"/>
+                        <ellipse cx="140" cy="81" rx="10" ry="6" fill="#C1121F" stroke="#FFF" stroke-width="1"/>
+                    `;
+                    break;
+                case 'dandy':
+                    topDecoration = `
+                        <!-- Chocolate Top -->
+                        <path d="M 30 72 Q 100 68 170 72 L 170 88 Q 100 92 30 88 Z" fill="#582F0E"/>
+                        <!-- Colored Candies (M&M / Dandy) -->
+                        <circle cx="50" cy="78" r="4" fill="#E63946"/>
+                        <circle cx="68" cy="82" r="4" fill="#FFB703"/>
+                        <circle cx="85" cy="76" r="4" fill="#2A9D8F"/>
+                        <circle cx="105" cy="83" r="4" fill="#4EA8DE"/>
+                        <circle cx="125" cy="77" r="4" fill="#E63946"/>
+                        <circle cx="145" cy="82" r="4" fill="#FFB703"/>
+                        <circle cx="158" cy="76" r="3.5" fill="#2A9D8F"/>
+                    `;
+                    break;
+                case 'oreo':
+                    topDecoration = `
+                        <!-- Cream top -->
+                        <path d="M 30 72 Q 100 68 170 72 L 170 88 Q 100 92 30 88 Z" fill="#F8F9FA"/>
+                        <!-- Oreo Cookie Crumbles -->
+                        <path d="M 35 78 Q 100 70 165 78" stroke="#212529" stroke-width="3" stroke-dasharray="2 4" fill="none"/>
+                        <!-- Full Oreo Cookies -->
+                        <circle cx="70" cy="80" r="11" fill="#1A1A1A" stroke="#333" stroke-width="1"/>
+                        <circle cx="70" cy="80" r="8" fill="none" stroke="#444" stroke-width="1"/>
+                        <circle cx="130" cy="80" r="11" fill="#1A1A1A" stroke="#333" stroke-width="1"/>
+                        <circle cx="130" cy="80" r="8" fill="none" stroke="#444" stroke-width="1"/>
+                    `;
+                    break;
+                case 'oreomani':
+                    topDecoration = `
+                        <!-- Half Oreo Crumbles, Half Peanut & Chocolate -->
+                        <path d="M 30 72 Q 100 68 170 72 L 170 88 Q 100 92 30 88 Z" fill="#F8F9FA"/>
+                        <!-- Oreo side -->
+                        <circle cx="65" cy="80" r="10" fill="#1A1A1A"/>
+                        <path d="M 35 76 L 95 76" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="2 3"/>
+                        <!-- Peanut Side -->
+                        <path d="M 100 74 L 170 74 L 170 86 L 100 86 Z" fill="#6C3A13"/>
+                        <circle cx="115" cy="80" r="2.5" fill="#E9C46A"/>
+                        <circle cx="130" cy="78" r="2" fill="#E9C46A"/>
+                        <circle cx="145" cy="82" r="2.5" fill="#E9C46A"/>
+                        <circle cx="158" cy="79" r="2" fill="#E9C46A"/>
+                    `;
+                    break;
+                case 'flips':
+                    topDecoration = `
+                        <!-- Chocolate Layer -->
+                        <path d="M 30 72 Q 100 68 170 72 L 170 88 Q 100 92 30 88 Z" fill="#582F0E"/>
+                        <!-- Flips Pillows / Cereals -->
+                        <rect x="45" y="74" width="11" height="9" rx="2" fill="#E9C46A" stroke="#B07D2B"/>
+                        <rect x="62" y="78" width="11" height="9" rx="2" fill="#E9C46A" stroke="#B07D2B"/>
+                        <rect x="80" y="73" width="11" height="9" rx="2" fill="#E9C46A" stroke="#B07D2B"/>
+                        <rect x="98" y="78" width="11" height="9" rx="2" fill="#E9C46A" stroke="#B07D2B"/>
+                        <!-- Chocolate sprinkles on other half -->
+                        <path d="M 115 76 Q 165 74 165 84" stroke="#2B1704" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+                    `;
+                    break;
+            }
+
+            return `
+                <svg viewBox="0 0 200 160" class="w-full h-48 object-contain">
+                    <defs>
+                        <linearGradient id="containerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.8)" />
+                            <stop offset="100%" stop-color="rgba(230,230,250,0.5)" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Background leaf reflection / environmental touch -->
+                    <path d="M 10 20 C 30 5, 70 5, 90 30 C 110 5, 160 10, 180 30" stroke="#81C784" stroke-width="3" fill="none" opacity="0.2"/>
+                    
+                    <!-- Transparent Plastic Container Base -->
+                    <path d="M 25 65 L 175 65 L 155 140 Q 100 148 45 140 Z" fill="url(#containerGrad)" stroke="#FFFFFF" stroke-width="2"/>
+                    <path d="M 20 60 L 180 60 L 175 68 L 25 68 Z" fill="rgba(255,255,255,0.9)" stroke="#DDD" stroke-width="1"/>
+                    
+                    <!-- Cake Layers Inside Container -->
+                    <!-- Bottom Chocolate/Sponge Layer -->
+                    <path d="M 43 125 L 157 125 L 153 138 Q 100 145 47 138 Z" fill="#4A2511"/>
+                    <!-- Cream Middle Layer -->
+                    <path d="M 37 100 L 163 100 L 157 125 L 43 125 Z" fill="#FFF8F0"/>
+                    <!-- Top Sponge/Fruit layer -->
+                    <path d="M 31 75 L 169 75 L 163 100 L 37 100 Z" fill="#E8C39E"/>
+                    
+                    <!-- Top Flavor Topping -->
+                    ${topDecoration}
+                    
+                    <!-- Container Plastic Shimmer / Highlights -->
+                    <path d="M 35 70 L 48 135" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 42 70 L 53 130" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                    
+                    <!-- Name Label Sticker on Box -->
+                    <rect x="50" y="20" width="100" height="30" rx="8" fill="#FFFFFF" stroke="#F0F0F0" filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.1))"/>
+                    <text x="100" y="40" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#5B2C6F" text-anchor="middle">${name}</text>
+                </svg>
+            `;
+        }
+
+        // Render products into grid
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            grid.innerHTML = items.map(product => {
+                const whatsappMsg = encodeURIComponent(`Hola! 👋 Quisiera información y pedir la torta fría: *${product.name}* (${product.price}). ¿Tienen disponibilidad?`);
+                
+                return `
+                <div class="glass-card rounded-3xl overflow-hidden card-hover flex flex-col justify-between border border-white/80 shadow-md">
+                    <div>
+                        <!-- Container Illustration Image -->
+                        <div class="bg-gradient-to-br ${product.bgGradient} p-4 relative flex items-center justify-center">
+                            <span class="absolute top-3 left-3 ${product.tagColor} text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                ${product.badge}
+                            </span>
+                            ${generateProductSVG(product.svgType, product.name)}
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="p-5">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">${product.name}</h3>
+                                <span class="text-lg font-extrabold text-brand-purple bg-purple-50 px-3 py-1 rounded-xl border border-purple-100">
+                                    ${product.price}
+                                </span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                                ${product.description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="px-5 pb-5 pt-0 flex items-center gap-2">
+                        <button onclick="openModal(${product.id})" class="flex-1 bg-purple-100 hover:bg-purple-200 text-brand-purple font-semibold text-xs py-2.5 px-3 rounded-xl transition-all flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-eye"></i> Detalle
+                        </button>
+                        <a href="https://wa.me/584243522615?text=${whatsappMsg}" target="_blank" 
+                           class="flex-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // Category Filter Logic
+        function filterCategory(category) {
+            activeCategory = category;
+            
+            // Update UI buttons
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-purple', 'text-white');
+                btn.classList.add('bg-white/80', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-white/80', 'text-gray-700');
+            event.target.classList.add('bg-brand-purple', 'text-white');
+
+            filterProducts();
+        }
+
+        // Search logic
+        function handleSearch() {
+            filterProducts();
+        }
+
+        // Combined Filter Function
+        function filterProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            const filtered = products.filter(product => {
+                const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                      product.description.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            renderProducts(filtered);
+        }
+
+        // Modal Logic
+        function openModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const whatsappMsg = encodeURIComponent(`Hola! 👋 Deseo realizar un pedido de: *${product.name}* por ${product.price}. ¿Tienen delivery para mi zona?`);
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="bg-gradient-to-br ${product.bgGradient} p-6 flex justify-center relative">
+                    ${generateProductSVG(product.svgType, product.name)}
+                </div>
+                <div class="p-6">
+                    <span class="inline-block ${product.tagColor} text-xs font-bold px-3 py-1 rounded-full mb-2">
+                        ${product.badge}
+                    </span>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-1">${product.name}</h3>
+                    <p class="text-2xl font-extrabold text-brand-purple mb-4">${product.price}</p>
+                    
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Descripción</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                        ${product.description}
+                    </p>
+
+                    <div class="bg-purple-50 p-3 rounded-2xl mb-6 border border-purple-100 flex items-center gap-3">
+                        <i class="fa-solid fa-truck-fast text-brand-orange text-xl"></i>
+                        <div class="text-xs text-gray-600">
+                            <strong>Envío rápido:</strong> Disponible para delivery directo a tu puerta o pedidos al mayor.
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/584243522615?text=${whatsappMsg}" target="_blank"
+                       class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Ordenar vía WhatsApp</span>
+                    </a>
+                </div>
+            `;
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('product-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Initial Render
+        window.onload = function() {
+            renderProducts(products);
+        };
+    </script>
+</body>
+</html>
